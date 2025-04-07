@@ -238,7 +238,7 @@ export default {
           console.log(records);
         })
         .catch((error) => {
-          this.$message.error("错误：", error);
+          this.$message.error("错误：" + error);
         });
     },
 
@@ -305,7 +305,7 @@ export default {
               }
             })
             .catch((error) => {
-              this.$message.error("请求错误", error);
+              this.$message.error("请求错误:" + error);
             });
         } else {
           this.$message.error(请检查输入是否正确);

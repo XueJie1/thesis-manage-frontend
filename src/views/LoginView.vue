@@ -25,6 +25,7 @@
               auto-complete="off"
               placeholder="请输入密码"
               show-password
+              @keyup.enter.native="handleLogin"
             >
               <template slot="prepend"
                 ><i style="font-size: 20px" class="el-icon-key"></i
@@ -36,6 +37,7 @@
               style="width: 100%"
               type="primary"
               @click="handleLogin"
+              @click.native.prevent="handleLogin"
               :loading="loading"
               >登录</el-button
             >
@@ -92,8 +94,9 @@ export default {
             });
           } else {
             // 弹出报错信息
+            console.log(response.data.message);
             const errorMessage = response.data.message;
-            this.$message.error("错误：", errorMessage);
+            this.$message.error("错误：" + errorMessage);
           }
         })
         .catch((error) => {
